@@ -17,6 +17,11 @@ const router = createRouter({
       path: '/watch',
       name: 'Watch',
       component: () => import('@cc/views/WatchersView.vue')
+    },  
+    {
+      path: '/otp',
+      name: 'OTP',
+      component: () => import('@cc/views/OTPView.vue')
     },
   ]
 })
