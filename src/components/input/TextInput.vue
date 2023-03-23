@@ -1,21 +1,27 @@
 <template>
-  <p>Text Input</p>
-  <p>Message is: {{ textMessage }}</p>
-  <input v-model="textMessage" placeholder="edit me" />
+  <input v-model="value" type="input" placeholder="edit me" />
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
 
-const props = defineProps(['modelValue'])
-const emits = defineEmits(['update:modelValue'])
+interface Props { 
+  modelValue: string,
+ }
 
-const textMessage = computed({
+ interface Emits{
+    (e: 'update:modelValue', value: string)
+ }
+ 
+const props = defineProps<Props>()
+const emits = defineEmits<Emits>()
+
+const value = computed({
   get(){
-    return props.modelValue
+    return props.modelValue;
   },
   set(value){
-    emits('update:modelValue', value)
+    emits('update:modelValue',value)
   }
 })
 

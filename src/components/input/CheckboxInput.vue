@@ -1,16 +1,20 @@
 <template>
-  <textarea v-model="value" placeholder="edit me" />
+  <div v-for="opt of props.options" :key="opt.value">
+    <label :for="opt.value">{{ opt.label }}</label>
+    <input type="checkbox" :value="opt.value" v-model="value" placeholder="edit me" />
+  </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
 
 interface Props { 
-  modelValue: string,
+  modelValue: string[],
+  options: { label: string, value: string }[]
  }
 
  interface Emits{
-    (e: 'update:modelValue', value: string)
+    (e: 'update:modelValue', value: string[])
  }
  
 const props = defineProps<Props>()
@@ -22,7 +26,6 @@ const value = computed({
   },
   set(value){
     emits('update:modelValue', value)
-  }
-})
+  }})
 
 </script>

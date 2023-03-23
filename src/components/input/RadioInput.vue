@@ -1,5 +1,8 @@
 <template>
-  <textarea v-model="value" placeholder="edit me" />
+  <div v-for="opt of props.options" :key="opt.value">
+    <label :for="opt.value">{{ opt.label }}</label>
+    <input type="radio" :value="opt.value" v-model="value" placeholder="edit me" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -7,6 +10,7 @@ import { computed } from 'vue';
 
 interface Props { 
   modelValue: string,
+  options: { label: string, value: string }[]
  }
 
  interface Emits{
@@ -22,7 +26,6 @@ const value = computed({
   },
   set(value){
     emits('update:modelValue', value)
-  }
-})
+  }})
 
 </script>
