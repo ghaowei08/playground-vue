@@ -23,6 +23,11 @@ const router = createRouter({
       name: 'OTP',
       component: () => import('@cc/views/OTPView.vue')
     },
+    {
+      path: '/scroll',
+      name: 'Scroll',
+      component: () => import('@cc/views/ScrollChangeView.vue')
+    },
   ]
 })
 
