@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
+import i18n from '@cc/modules/i18n'
 
 import TextInput from '@cc/components/input/TextInput.vue';
 import RadioInput from '@cc/components/input/RadioInput.vue';
@@ -18,6 +19,7 @@ app.component('checkbox-input', CheckboxInput)
 app.component('multiline-text-input', MultilineTextInput)
 app.component('select-input', SelectInput)
 
+app.use(i18n)
 app.use(router)
 app.use(createPinia())
 
