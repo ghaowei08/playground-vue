@@ -1,7 +1,6 @@
 <template>
-  <!-- <RouterView></RouterView> -->
-  <app-modal />
-  <button @click="showModal">modal!</button>
+  <RouterView />
+  <!-- <button @click="showModal">modal!</button> -->
 </template>
 
 <script setup lang="ts">
@@ -11,16 +10,18 @@ import { onMounted, inject } from 'vue';
 
 onMounted(() => {
   console.log(inject('$msg'))
-
 })
 
-const $modal = inject("$modal")
-function showModal(){
-  // inject('$modal').show({
-  //   title: "Test!",
-  //   text: "test test test",
-  // })
-  ($modal as any).show()
-}
+// const $modal = inject("$modal")
+
+// function showModal(){
+//   ($modal as any).show({
+//     title: "Test!",
+//     text: "test test test",
+//     callback: () => {
+//       console.log("It is callback")
+//     }
+//   })
+// }
 
 </script>

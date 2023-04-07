@@ -16,12 +16,15 @@ import emitter from '@cc/plugin/mitt'
 const visible = ref<boolean>(false)
 const title = ref<string>('Heelo')
 const text = ref<string>('World')
-
+let callback: () => void
 
 onBeforeMount(() => {
   console.log("Here App Modal")
-  emitter.on('*', (type, e) => {
+  emitter.on('show', (param) => {
     visible.value = true
+    title.value = param.title
+    text.value = param.text
+    callback = param.callback
   })
 })
 
@@ -30,7 +33,7 @@ function hide() {
 }
 
 function confirm() {
-  console.log("Confirm")
+  callback()
 }
 
 function show(params) {
